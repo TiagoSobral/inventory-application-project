@@ -1,10 +1,7 @@
 import { Pool } from 'pg';
 
-// no value for now until online database is created
-const database_url = '';
-
 const pool = new Pool({
-	connectionString: database_url,
+	connectionString: process.env.DATABASE_URL,
 });
 
-export { database_url };
+export { pool };

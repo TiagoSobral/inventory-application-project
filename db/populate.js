@@ -32,7 +32,7 @@ CREATE TABLE flowers (
 async function main() {
 	console.log('seeding...');
 	const client = new Client({
-		connectionString: database_url,
+		connectionString: process.env.DATABASE_URL,
 	});
 	await client.connect();
 	await client.query(initialScript);
