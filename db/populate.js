@@ -1,5 +1,4 @@
 import { Client } from 'pg';
-import { database_url } from './pool';
 
 const initialScript = `
 CREATE TABLE category (
