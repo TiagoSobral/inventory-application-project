@@ -1,5 +1,6 @@
-import { express } from 'express';
-import { path } from 'node:path';
+import express from 'express';
+import path from 'node:path';
+import { indexRouter } from './routers/indexRouter.js';
 
 const app = express();
 const PORT = 3000;
@@ -15,3 +16,5 @@ app.listen(PORT, (error) => {
 	}
 	console.log(`listening on port ${PORT}`);
 });
+
+app.get('/', indexRouter);
