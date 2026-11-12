@@ -31,3 +31,49 @@ async function deleteFlower(id) {
 		[id],
 	);
 }
+
+async function getFlowerBySearch(name) {
+	pool.query(
+		`
+    SELECT 
+    flowers.name as flower, 
+    category.name as category, 
+    color.name as color, 
+    arrangement.name as arrangement, 
+    (category.price_unit * arrangement.quantity) * arrangement.price_markup 
+    as price from flowers 
+      LEFT JOIN category on category_id = category.id
+      LEFT JOIN color on color_id = color.id
+      LEFT JOIN arrangement on arrangement_id = arrangement.id
+      WHERE flower.name = VALUE(1$)
+      `,
+		[name],
+	);
+}
+
+async function getFlowerById(id) {
+	pool.query(
+		`
+    SELECT 
+    flowers.name as flower, 
+    category.name as category, 
+    color.name as color, 
+    arrangement.name as arrangement, 
+    (category.price_unit * arrangement.quantity) * arrangement.price_markup 
+    as price from flowers 
+      LEFT JOIN category on category_id = category.id
+      LEFT JOIN color on color_id = color.id
+      LEFT JOIN arrangement on arrangement_id = arrangement.id
+      WHERE flower.id = VALUE(1$)
+      `,
+		[id],
+	);
+}
+
+export {
+	getAllFlowers,
+	createFlower,
+	deleteFlower,
+	getFlowerBySearch,
+	getFlowerById,
+};
