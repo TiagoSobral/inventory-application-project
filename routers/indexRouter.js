@@ -1,9 +1,8 @@
 import { Router } from 'express';
+import { getInventory } from '../controllers/productsController.js';
 
 const indexRouter = Router();
 
-indexRouter.get('/', (req, res) => {
-	res.render('index');
-});
+indexRouter.get('/', getInventory);
 
 export { indexRouter };

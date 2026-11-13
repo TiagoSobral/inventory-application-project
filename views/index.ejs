@@ -14,44 +14,29 @@
 				<label for="category">category:</label>
 				<select name="category" id="category">
 					<option value="">--please choose an option--</option>
-					<option value="1">Carnations</option>
-					<option value="2">Daffodils</option>
-					<option value="3">Daisies</option>
-					<option value="4">Irises</option>
-					<option value="5">Peonies</option>
-					<option value="6">Lilies</option>
-					<option value="7">Orchids</option>
-					<option value="8">Roses</option>
-					<option value="9">Sunflowers</option>
-					<option value="10">Tulips</option>
+					<% if (locals.category) {%>
+						<% category.forEach((cat) => { %>
+					<option value=`${cat.id}`><%= cat.name %></option>
+					<% }); %>
+					<% } %>
 				</select>
 				<label for="color">color:</label>
 				<select name="color" id="color">
 					<option value="">--please choose an option--</option>
-					<option value="1">Blue</option>
-					<option value="2">Brown</option>
-					<option value="3">Burgundy</option>
-					<option value="4">Orange</option>
-					<option value="5">Peach</option>
-					<option value="6">Pink</option>
-					<option value="7">Purple</option>
-					<option value="8">Red</option>
-					<option value="9">White</option>
-					<option value="10">Yellow</option>
+				<% if (locals.color) {%>
+						<% color.forEach((col) => { %>
+					<option value=`${col.id}`><%= col.name %></option>
+					<% }); %>
+					<% } %>
 				</select>
 				<label for="arrangement">arrangement:</label>
 				<select name="arrangement" id="arrangement">
 					<option value="">--please choose an option--</option>
-					<option value="1">Carnations</option>
-					<option value="2">Daffodils</option>
-					<option value="3">Daisies</option>
-					<option value="4">Irises</option>
-					<option value="5">Peonies</option>
-					<option value="6">Lilies</option>
-					<option value="7">Orchids</option>
-					<option value="8">Roses</option>
-					<option value="9">Sunflowers</option>
-					<option value="10">Tulips</option>
+					<% if (locals.arrangement) {%>
+						<% arrangement.forEach((arr) => { %>
+					<option value=`${arr.id}`><%= arr.name %></option>
+					<% }); %>
+					<% } %>
 				</select>
 				<button type="submit">add</button>
 			</form>

@@ -1,4 +1,4 @@
-import { pool } from './pool';
+import { pool } from './pool.js';
 
 async function getAllFlowers() {
 	const { rows } = pool.query(`
@@ -71,11 +71,11 @@ async function getFlowerById(id) {
 }
 
 async function getFixedTables() {
-	const cat = await pool.query(`SELECT * FROM category;`).rows;
-	const color = await pool.query(`SELECT * FROM color;`).rows;
-	const arrange = await pool.query(`SELECT * FROM arrangement;`).rows;
+	const cat = await pool.query(`SELECT * FROM category;`);
+	const color = await pool.query(`SELECT * FROM color;`);
+	const arrange = await pool.query(`SELECT * FROM arrangement;`);
 
-	return { cat, color, arrange };
+	return { cat: cat.rows, color: color.rows, arrange: arrange.rows };
 }
 
 export {
