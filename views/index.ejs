@@ -8,13 +8,7 @@
 	<body>
 		<%- include('partials/navigationBar') %>
 		<main>
-			<form action="/" method="POST">
-				<label for="name">flower name:</label>
-				<input type="text" id="name" name="name" />
-				<%- include('partials/formOptions') %>
-				<button type="submit">add</button>
-			</form>
-			<%- include('partials/items') %>
+			<%- include('partials/formOptions') %> <%- include('partials/items') %>
 		</main>
 		<%- include('partials/footer') %>
 	</body>
