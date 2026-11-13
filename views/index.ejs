@@ -11,35 +11,10 @@
 			<form action="/" method="POST">
 				<label for="name">flower name:</label>
 				<input type="text" id="name" name="name" />
-				<label for="category">category:</label>
-				<select name="category" id="category">
-					<option value="">--please choose an option--</option>
-					<% if (locals.category) {%>
-						<% category.forEach((cat) => { %>
-					<option value=`${cat.id}`><%= cat.name %></option>
-					<% }); %>
-					<% } %>
-				</select>
-				<label for="color">color:</label>
-				<select name="color" id="color">
-					<option value="">--please choose an option--</option>
-				<% if (locals.color) {%>
-						<% color.forEach((col) => { %>
-					<option value=`${col.id}`><%= col.name %></option>
-					<% }); %>
-					<% } %>
-				</select>
-				<label for="arrangement">arrangement:</label>
-				<select name="arrangement" id="arrangement">
-					<option value="">--please choose an option--</option>
-					<% if (locals.arrangement) {%>
-						<% arrangement.forEach((arr) => { %>
-					<option value=`${arr.id}`><%= arr.name %></option>
-					<% }); %>
-					<% } %>
-				</select>
+				<%- include('partials/formOptions') %>
 				<button type="submit">add</button>
 			</form>
+			<%- include('partials/items') %>
 		</main>
 		<%- include('partials/footer') %>
 	</body>
