@@ -27,7 +27,7 @@ async function createFlower({ name, category_id, color_id, arrangement_id }) {
 async function deleteFlower(id) {
 	pool.query(
 		`DELETE from flowers
-    WHERE id = VALUE($1)`,
+    WHERE id = $1`,
 		[id],
 	);
 }
@@ -70,10 +70,19 @@ async function getFlowerById(id) {
 	);
 }
 
+async function getFixedTables() {
+	const cat = await pool.query(`SELECT * FROM category;`).rows;
+	const color = await pool.query(`SELECT * FROM color;`).rows;
+	const arrange = await pool.query(`SELECT * FROM arrangement;`).rows;
+
+	return { cat, color, arrange };
+}
+
 export {
 	getAllFlowers,
 	createFlower,
 	deleteFlower,
 	getFlowerBySearch,
 	getFlowerById,
+	getFixedTables,
 };
