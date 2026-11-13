@@ -38,31 +38,30 @@ const arrangements = [
 ];
 
 const initialScript = `
-CREATE TABLE category (
+CREATE TABLE IF NOT EXISTS category (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT NOT NULL UNIQUE,
   price_unit int NOT NULL
 );
 
-CREATE TABLE color (
+CREATE TABLE IF NOT EXISTS color (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT NOT NULL UNIQUE
 );
 
-CREATE TABLE arrangement (
+CREATE TABLE IF NOT EXISTS arrangement (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT NOT NULL UNIQUE,
   price_markup DECIMAL NOT NULL,
   quantity int NOT NULL
 );
 
-CREATE TABLE flowers (
+CREATE TABLE IF NOT EXISTS flowers (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT NOT NULL,
   color_id int NOT NULL references color(id),
   category_id int NOT NULL references category(id),
-  arrangement_id int NOT NULL references arrangement(id),
-  price int NOT NULL
+  arrangement_id int NOT NULL references arrangement(id)
 );`;
 
 async function insertCat(client) {
