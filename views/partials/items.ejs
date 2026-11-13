@@ -1,0 +1,19 @@
+<section>
+  <ul>
+  <% if (locals.flower) { %>
+    <% flower.forEach((item) =>  {%>
+      <li id="item.id">
+        <ul>
+          <li><%=item.name %></li>
+          <li><%=item.color %></li>
+          <li><%=item.category %></li>
+          <li><%=item.arrangement %></li>
+          <li><%=item.price %></li>
+          <li><button>Modify</button></li>
+          <li><button>Delete</button></li>
+        </ul>
+      </li>
+    <% }) %>
+  <% } %>
+  </ul>
+</section>
