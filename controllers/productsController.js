@@ -1,4 +1,9 @@
-import { createFlower, getAllFlowers, getFixedTables } from '../db/queries.js';
+import {
+	createFlower,
+	deleteFlower,
+	getAllFlowers,
+	getFixedTables,
+} from '../db/queries.js';
 
 async function getInventory(req, res) {
 	const tables = await getFixedTables();
@@ -20,4 +25,10 @@ async function addNewItemPost(req, res) {
 	res.redirect('/');
 }
 
-export { getInventory, addNewItemPost };
+async function deleteItemPost(req, res) {
+	const id = req.params.id;
+	await deleteFlower(id);
+	res.redirect('/');
+}
+
+export { getInventory, addNewItemPost, deleteItemPost };

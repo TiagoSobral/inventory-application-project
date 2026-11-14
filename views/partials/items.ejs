@@ -9,8 +9,16 @@
           <li><%=item.category %></li>
           <li><%=item.arrangement %></li>
           <li><%=item.price %></li>
-          <li><button>Modify</button></li>
-          <li><button>Delete</button></li>
+          <li>
+            <form action="/update/<%= item.id %>" method="post">
+              <button type="submit">Modify</button>
+            </form>
+          </li>
+          <li>
+            <form action="/delete/<%= item.id %>" action="post">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
         </ul>
       </li>
     <% }) %>
