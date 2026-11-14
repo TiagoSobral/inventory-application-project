@@ -3,6 +3,7 @@ import { pool } from './pool.js';
 async function getAllFlowers() {
 	const { rows } = await pool.query(`
     SELECT 
+    flowers.id as id,
     flowers.name as flower, 
     category.name as category, 
     color.name as color, 
