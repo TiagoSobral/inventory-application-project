@@ -1,0 +1,38 @@
+<form action="/update/<%= locals.update.id %>" method="post">
+  <label for="name">flower name:</label>
+  <input type="text" id="name" name="name"  value="<%= locals.update.name %>"/>
+  <label for="category">category:</label>
+  <select name="category" id="category">
+    <option value="">--please choose an option--</option>
+    <% category.forEach((cat) => { %>
+      <% if (locals.update.category_id == cat.id) {%>
+        <option selected value="<%= cat.id %>"><%= cat.name %></option>
+      <%} else { %>
+        <option value="<%= cat.id %>"><%= cat.name %></option>
+      <% } %>
+    <% }); %>
+  </select>
+  <label for="color">color:</label>
+  <select name="color" id="color">
+    <option value="">--please choose an option--</option>
+    <% color.forEach((col) => { %>
+      <% if (locals.update.color_id == col.id) {%>
+        <option selected value="<%= col.id %>"><%= col.name %></option>
+      <% } else { %>
+        <option value="<%= col.id %>"><%= col.name %></option>
+      <% } %>
+    <% }); %>
+  </select>
+  <label for="arrangement">arrangement:</label>
+  <select name="arrangement" id="arrangement">
+    <option value="">--please choose an option--</option>
+    <% arrangement.forEach((arr) => { %>
+      <% if (locals.update.arrangement_id == arr.id) {%>
+        <option selected value="<%= arr.id %>"><%= arr.name %></option>
+      <% } else { %>
+        <option value="<%= arr.id %>"><%= arr.name %></option>
+      <% } %>
+    <% }); %>
+  </select>
+	<button type="submit">update</button>
+</form>

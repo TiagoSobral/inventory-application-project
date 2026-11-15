@@ -3,6 +3,7 @@ import {
 	deleteFlower,
 	getAllFlowers,
 	getFixedTables,
+	getFlowerById,
 } from '../db/queries.js';
 
 async function getInventory(req, res) {
@@ -31,4 +32,18 @@ async function deleteItemPost(req, res) {
 	res.redirect('/');
 }
 
-export { getInventory, addNewItemPost, deleteItemPost };
+async function updateItemGet(req, res) {
+	const id = req.params.id;
+	const tables = await getFixedTables();
+	const items = await getAllFlowers();
+	const [update] = await getFlowerById(id);
+	res.render('index', {
+		category: tables.cat,
+		color: tables.color,
+		arrangement: tables.arrange,
+		flower: items,
+		update: update,
+	});
+}
+
+export { getInventory, addNewItemPost, deleteItemPost, updateItemGet };
