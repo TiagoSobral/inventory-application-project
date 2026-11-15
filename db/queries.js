@@ -46,29 +46,21 @@ async function getFlowerBySearch(name) {
       LEFT JOIN category on category_id = category.id
       LEFT JOIN color on color_id = color.id
       LEFT JOIN arrangement on arrangement_id = arrangement.id
-      WHERE flower.name = VALUE(1$)
+      WHERE flowers.name = $1
       `,
 		[name],
 	);
 }
 
 async function getFlowerById(id) {
-	await pool.query(
+	const { rows } = await pool.query(
 		`
-    SELECT 
-    flowers.name as flower, 
-    category.name as category, 
-    color.name as color, 
-    arrangement.name as arrangement, 
-    (category.price_unit * arrangement.quantity) * arrangement.price_markup 
-    as price from flowers 
-      LEFT JOIN category on category_id = category.id
-      LEFT JOIN color on color_id = color.id
-      LEFT JOIN arrangement on arrangement_id = arrangement.id
-      WHERE flower.id = VALUE(1$)
+    SELECT * from flowers 
+    WHERE flowers.id = $1
       `,
 		[id],
 	);
+	return rows;
 }
 
 async function getFixedTables() {
