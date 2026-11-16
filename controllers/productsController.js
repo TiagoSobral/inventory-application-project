@@ -4,6 +4,7 @@ import {
 	getAllFlowers,
 	getFixedTables,
 	getFlowerById,
+	updateFlower,
 } from '../db/queries.js';
 
 async function getInventory(req, res) {
@@ -46,4 +47,20 @@ async function updateItemGet(req, res) {
 	});
 }
 
-export { getInventory, addNewItemPost, deleteItemPost, updateItemGet };
+async function updateItemPost(req, res) {
+	const id = req.params.id;
+	const name = req.body.name;
+	const category = req.body.category;
+	const color = req.body.color;
+	const arrangement = req.body.arrangement;
+	await updateFlower(name, category, color, arrangement, id);
+	await getInventory(req, res);
+}
+
+export {
+	getInventory,
+	addNewItemPost,
+	deleteItemPost,
+	updateItemGet,
+	updateItemPost,
+};

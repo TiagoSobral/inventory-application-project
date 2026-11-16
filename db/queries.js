@@ -63,6 +63,21 @@ async function getFlowerById(id) {
 	return rows;
 }
 
+async function updateFlower(name, category_id, color_id, arrangement_id, id) {
+	const { rows } = await pool.query(
+		`
+    UPDATE flowers 
+    SET name = $1,
+    category_id = $2,
+    color_id = $3,
+    arrangement_id = $4
+    WHERE id = $5
+      `,
+		[name, category_id, color_id, arrangement_id, id],
+	);
+	return rows;
+}
+
 async function getFixedTables() {
 	const cat = await pool.query(`SELECT * FROM category;`);
 	const color = await pool.query(`SELECT * FROM color;`);
@@ -78,4 +93,5 @@ export {
 	getFlowerBySearch,
 	getFlowerById,
 	getFixedTables,
+	updateFlower,
 };
