@@ -4,6 +4,7 @@ import {
 	getAllFlowers,
 	getFixedTables,
 	getFlowerById,
+	getFlowerBySearch,
 	updateFlower,
 } from '../db/queries.js';
 
@@ -54,7 +55,19 @@ async function updateItemPost(req, res) {
 	const color = req.body.color;
 	const arrangement = req.body.arrangement;
 	await updateFlower(name, category, color, arrangement, id);
-	await getInventory(req, res);
+	res.redirect('/');
+}
+
+async function searchItemGet(req, res) {
+	const name = req.query.name;
+	const flowers = await getFlowerBySearch(name);
+	const tables = await getFixedTables();
+	res.render('index', {
+		category: tables.cat,
+		color: tables.color,
+		arrangement: tables.arrange,
+		flower: flowers,
+	});
 }
 
 export {
@@ -63,4 +76,5 @@ export {
 	deleteItemPost,
 	updateItemGet,
 	updateItemPost,
+	searchItemGet,
 };

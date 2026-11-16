@@ -34,7 +34,7 @@ async function deleteFlower(id) {
 }
 
 async function getFlowerBySearch(name) {
-	await pool.query(
+	const { rows } = await pool.query(
 		`
     SELECT 
     flowers.name as flower, 
@@ -46,10 +46,11 @@ async function getFlowerBySearch(name) {
       LEFT JOIN category on category_id = category.id
       LEFT JOIN color on color_id = color.id
       LEFT JOIN arrangement on arrangement_id = arrangement.id
-      WHERE flowers.name = $1
+      WHERE flowers.name LIKE ($1)
       `,
-		[name],
+		[`%${name}%`],
 	);
+	return rows;
 }
 
 async function getFlowerById(id) {

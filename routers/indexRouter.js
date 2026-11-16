@@ -5,6 +5,7 @@ import {
 	getInventory,
 	updateItemGet,
 	updateItemPost,
+	searchItemGet,
 } from '../controllers/productsController.js';
 
 const indexRouter = Router();
@@ -14,5 +15,6 @@ indexRouter.post('/create', addNewItemPost);
 indexRouter.get('/update/:id', updateItemGet);
 indexRouter.post('/update/:id', updateItemPost);
 indexRouter.post('/delete/:id', deleteItemPost);
+indexRouter.get('/search', searchItemGet);
 
 export { indexRouter };

@@ -1,8 +1,8 @@
 <form action="/create" method="post">
   <label for="name">flower name:</label>
-  <input type="text" id="name" name="name"/>
+  <input type="text" id="name" name="name" required/>
   <label for="category">category:</label>
-  <select name="category" id="category">
+  <select name="category" id="category" required>
     <option value="">--please choose an option--</option>
     <% if (locals.category) {%>
       <% category.forEach((cat) => { %>
@@ -11,7 +11,7 @@
     <% } %>
   </select>
   <label for="color">color:</label>
-  <select name="color" id="color">
+  <select name="color" id="color" required>
     <option value="">--please choose an option--</option>
   <% if (locals.color) {%>
       <% color.forEach((col) => { %>
@@ -20,7 +20,7 @@
     <% } %>
   </select>
   <label for="arrangement">arrangement:</label>
-  <select name="arrangement" id="arrangement">
+  <select name="arrangement" id="arrangement" required>
     <option value="">--please choose an option--</option>
     <% if (locals.arrangement) {%>
       <% arrangement.forEach((arr) => { %>
