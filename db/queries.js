@@ -46,7 +46,7 @@ async function getFlowerBySearch(name) {
       LEFT JOIN category on category_id = category.id
       LEFT JOIN color on color_id = color.id
       LEFT JOIN arrangement on arrangement_id = arrangement.id
-      WHERE flowers.name LIKE ($1)
+      WHERE flowers.name ILIKE ($1)
       `,
 		[`%${name}%`],
 	);
@@ -79,8 +79,9 @@ async function updateFlower(name, category_id, color_id, arrangement_id, id) {
 	return rows;
 }
 
-async function organizeByCategory() {
-	const { rows } = await pool.query(`
+async function organizeBy(filter) {
+	const { rows } = await pool.query(
+		`
     SELECT 
     flowers.id as id,
     flowers.name as flower, 
@@ -92,62 +93,9 @@ async function organizeByCategory() {
       LEFT JOIN category on category_id = category.id
       LEFT JOIN color on color_id = color.id
       LEFT JOIN arrangement on arrangement_id = arrangement.id
-    ORDER BY category
-    `);
-	return rows;
-}
-
-async function organizeByColor() {
-	const { rows } = await pool.query(`
-    SELECT 
-    flowers.id as id,
-    flowers.name as flower, 
-    category.name as category, 
-    color.name as color, 
-    arrangement.name as arrangement, 
-    (category.price_unit * arrangement.quantity) * arrangement.price_markup 
-    as price from flowers 
-      LEFT JOIN category on category_id = category.id
-      LEFT JOIN color on color_id = color.id
-      LEFT JOIN arrangement on arrangement_id = arrangement.id
-    ORDER BY color
-    `);
-	return rows;
-}
-
-async function organizeByArrangement() {
-	const { rows } = await pool.query(`
-    SELECT 
-    flowers.id as id,
-    flowers.name as flower, 
-    category.name as category, 
-    color.name as color, 
-    arrangement.name as arrangement, 
-    (category.price_unit * arrangement.quantity) * arrangement.price_markup 
-    as price from flowers 
-      LEFT JOIN category on category_id = category.id
-      LEFT JOIN color on color_id = color.id
-      LEFT JOIN arrangement on arrangement_id = arrangement.id
-    ORDER BY arrangement
-    `);
-	return rows;
-}
-
-async function organizeByPrice() {
-	const { rows } = await pool.query(`
-    SELECT 
-    flowers.id as id,
-    flowers.name as flower, 
-    category.name as category, 
-    color.name as color, 
-    arrangement.name as arrangement, 
-    (category.price_unit * arrangement.quantity) * arrangement.price_markup 
-    as price from flowers 
-      LEFT JOIN category on category_id = category.id
-      LEFT JOIN color on color_id = color.id
-      LEFT JOIN arrangement on arrangement_id = arrangement.id
-    ORDER BY price
-    `);
+    ORDER BY ${filter}
+    `,
+	);
 	return rows;
 }
 
@@ -167,8 +115,5 @@ export {
 	getFlowerById,
 	getFixedTables,
 	updateFlower,
-	organizeByCategory,
-	organizeByColor,
-	organizeByPrice,
-	organizeByArrangement,
+	organizeBy,
 };
