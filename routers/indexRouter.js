@@ -6,11 +6,18 @@ import {
 	updateItemGet,
 	updateItemPost,
 	searchItemGet,
+	orderFlowersGet,
 } from '../controllers/productsController.js';
 
 const indexRouter = Router();
 
-indexRouter.get('/', getInventory);
+indexRouter.get('/', (req, res) => {
+	if (req.query) {
+		orderFlowersGet(req, res);
+	} else {
+		getInventory(req, res);
+	}
+});
 indexRouter.post('/create', addNewItemPost);
 indexRouter.get('/update/:id', updateItemGet);
 indexRouter.post('/update/:id', updateItemPost);

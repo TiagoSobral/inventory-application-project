@@ -5,6 +5,7 @@ import {
 	getFixedTables,
 	getFlowerById,
 	getFlowerBySearch,
+	organizeBy,
 	updateFlower,
 } from '../db/queries.js';
 
@@ -70,6 +71,18 @@ async function searchItemGet(req, res) {
 	});
 }
 
+async function orderFlowersGet(req, res) {
+	const filter = req.query.order;
+	const tables = await getFixedTables();
+	const items = await organizeBy(filter);
+	res.render('index', {
+		category: tables.cat,
+		color: tables.color,
+		arrangement: tables.arrange,
+		flower: items,
+	});
+}
+
 export {
 	getInventory,
 	addNewItemPost,
@@ -77,4 +90,5 @@ export {
 	updateItemGet,
 	updateItemPost,
 	searchItemGet,
+	orderFlowersGet,
 };
