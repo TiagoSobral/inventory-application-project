@@ -85,4 +85,10 @@ li {
 html,
 body {
 	height: 100%;
+	font-family: Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
