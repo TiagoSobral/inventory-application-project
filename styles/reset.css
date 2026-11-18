@@ -82,10 +82,10 @@ li {
 	list-style-type: none;
 }
 
-html,
-body {
+html {
 	height: 100%;
 	font-family: Arial, sans-serif;
+	align-content: space-between;
 }
 
 a {

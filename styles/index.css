@@ -2,9 +2,11 @@ body {
 	background-color: #ede3d9;
 	display: flex;
 	flex-direction: column;
+	height: 100vh;
 }
 
-.navBar {
+.navBar,
+footer {
 	background-color: #ccd5c4;
 	padding: 1rem;
 	box-shadow: 0.1rem 0.1rem 0.2rem 0.02rem rgba(0, 0, 0, 0.24);
@@ -27,6 +29,11 @@ main {
 	flex-direction: column;
 	gap: 2rem;
 	padding: 2rem 3rem;
+	height: 80%;
+}
+
+header {
+	height: 10%;
 }
 
 input,
@@ -66,7 +73,8 @@ button {
 
 .itemsSection,
 .items,
-.item {
+.item,
+footer {
 	display: flex;
 }
 
@@ -100,4 +108,17 @@ button {
 
 .items:nth-child(odd) {
 	background-color: rgb(239, 239, 239);
+}
+
+footer {
+	justify-content: center;
+	height: 10%;
+	align-items: center;
+}
+
+.gitHub {
+	height: 20px;
+	width: 20px;
+	background-image: url('assets/github.svg');
+	justify-self: center;
 }
