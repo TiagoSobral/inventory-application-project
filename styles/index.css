@@ -13,10 +13,7 @@ body {
 .navList {
 	width: 100%;
 	display: flex;
-}
-
-.navList li:first-child {
-	align-self: center;
+	justify-content: center;
 }
 
 .navList li:last-child {
