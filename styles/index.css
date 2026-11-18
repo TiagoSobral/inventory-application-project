@@ -24,3 +24,25 @@ body {
 	justify-content: center;
 	text-align: center;
 }
+
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 2rem 3rem;
+}
+
+input,
+select,
+button {
+	border-style: solid;
+	border-color: #ccd5c4;
+	border-radius: 5px;
+	box-shadow: 0.2rem 0.2rem 0.2rem 0.05rem rgba(0, 0, 0, 0.045);
+	height: 1.6rem;
+}
+
+button {
+	display: inline-flex;
+	align-items: center;
+}
