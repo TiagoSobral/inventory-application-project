@@ -110,6 +110,31 @@ footer {
 	background-color: rgb(239, 239, 239);
 }
 
+.item:last-of-type,
+.item:nth-child(6) {
+	padding-top: 0.2rem;
+}
+
+/* SVGS AND ASSETS */
+
+.modify,
+.delete {
+	height: 25px;
+	width: 25px;
+	background-size: contain;
+	border-style: none;
+	box-shadow: none;
+	background-color: transparent;
+}
+
+.modify {
+	background-image: url('assets/change.svg');
+}
+
+.delete {
+	background-image: url('assets/delete.svg');
+}
+
 footer {
 	justify-content: center;
 	height: 10%;

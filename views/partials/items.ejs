@@ -14,12 +14,12 @@
             <li><%=item.price %></li>
             <li>
               <form action="/update/<%= item.id %>" method="get">
-                <button type="submit">Modify</button>
+                <button type="submit" class="modify"></button>
               </form>
             </li>
             <li>
               <form action="/delete/<%= item.id %>" method="post">
-                <button type="submit">Delete</button>
+                <button type="submit" class="delete"></button>
               </form>
             </li>
           </ul>
