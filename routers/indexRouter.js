@@ -12,7 +12,7 @@ import {
 const indexRouter = Router();
 
 indexRouter.get('/', (req, res) => {
-	if (req.query) {
+	if (req.query.order) {
 		orderFlowersGet(req, res);
 	} else {
 		getInventory(req, res);

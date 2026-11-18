@@ -1,0 +1,26 @@
+body {
+	background-color: #ede3d9;
+	display: flex;
+	flex-direction: column;
+}
+
+.navBar {
+	background-color: #ccd5c4;
+	padding: 1rem;
+	box-shadow: 0.1rem 0.1rem 0.2rem 0.02rem rgba(0, 0, 0, 0.24);
+}
+
+.navList {
+	width: 100%;
+	display: flex;
+}
+
+.navList li:first-child {
+	align-self: center;
+}
+
+.navList li:last-child {
+	flex-basis: 80%;
+	justify-content: center;
+	text-align: center;
+}
