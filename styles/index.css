@@ -66,3 +66,41 @@ button {
 	font-size: 1rem;
 	padding: 0.3rem 0.5rem;
 }
+
+.itemsSection,
+.items,
+.item {
+	display: flex;
+}
+
+.itemsSection {
+	flex-direction: column;
+	border: #ccd5c4 solid 1px;
+}
+
+.items {
+	flex-direction: column;
+	align-items: center;
+	padding-left: 1rem;
+	border-bottom: #ccd5c4 solid 1px;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.item {
+	gap: 2rem;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.item li {
+	width: 100%;
+}
+
+.items:nth-child(even) {
+	background-color: #dee8d5;
+}
+
+.items:nth-child(odd) {
+	background-color: rgb(239, 239, 239);
+}

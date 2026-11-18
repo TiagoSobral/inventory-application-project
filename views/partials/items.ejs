@@ -1,12 +1,12 @@
-<section>
-  <ul>
+
+  <ul class="itemsSection">
   <% if (locals.flower) { %>
     <% flower.forEach((item) =>  {%>
       <% if (locals.update && locals.update.id == item.id) {%>
         <%- include('formUpdate') %>
       <% } else {%>
-        <li id="<%= item.id %>">
-          <ul>
+        <li id="<%= item.id %>" class="items">
+          <ul class="item">
             <li><%=item.flower %></li>
             <li><%=item.color %></li>
             <li><%=item.category %></li>
@@ -28,4 +28,3 @@
       <% }) %>
   <% } %>
   </ul>
-</section>
