@@ -92,6 +92,18 @@ footer {
 	padding-bottom: 0.5rem;
 }
 
+.itemTitles {
+	gap: 2rem;
+	padding-left: 1rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(7, 1fr);
+	background-color: #a0a79a;
+	font-weight: 600;
+}
+
 .item {
 	gap: 2rem;
 	justify-content: space-around;

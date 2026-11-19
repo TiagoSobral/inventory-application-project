@@ -1,6 +1,13 @@
 
   <ul class="itemsSection">
   <% if (locals.flower) { %>
+    <ul class="itemTitles">
+      <li>Name</li>
+      <li>Color</li>
+      <li>Category</li>
+      <li>Arrangement</li>
+      <li>Price</li>
+      </ul>
     <% flower.forEach((item) =>  {%>
       <% if (locals.update && locals.update.id == item.id) {%>
         <%- include('formUpdate') %>
